@@ -1,0 +1,83 @@
+<ion-view  view-title="Recommended Job">
+
+  <ion-content overflow-scroll="false" class="bg">
+
+    <ion-refresher on-refresh="refresh();"></ion-refresher>
+    <div class="row" data-ng-if="vm.deferred.$$state.status===0 && !vm.pullfromRefresh">
+      <div class="col text-center" >
+        <ion-spinner icon="spiral"  class="text-center"></ion-spinner>
+
+      </div>
+    </div>
+
+<div class="row padding-5" data-ng-if="vm.deferred.$$state.status===1 && vm.totalRecommendedJobs.length || vm.pullfromRefresh"ng-repeat="jobs in vm.totalRecommendedJobs track by $index">
+  <ion-item  ng-click="vm.jobView(jobs.userjob);" class="item-thumbnail-left" >
+
+    <img class="imgStyleFor"  ng-src="{{vm.apiUrl}}/{{jobs.recruiterId.profileImageURL || '/modules/core/client/img/bigN.png'}}">
+
+    <h2>{{jobs.userjob.jobtitle}}</h2>
+    <h3>{{jobs.recruiterId.organisationName}}</h3>
+    <p>{{jobs.userjob.jobprofile | limitTo:200}}</p>
+  </ion-item>
+
+</div>
+
+    <img data-ng-if="vm.deferred.$$state.status===1 && !vm.totalRecommendedJobs.length"
+         ng-src="{{vm.apiUrl}}/{{ vm.authentication.user.profileImageURL }}" class="center" alt="{{ vm.authentication.user.displayName }}"
+         width="80" height="80"
+         style="border-radius: 50%;">
+
+
+
+
+
+    <div class="card text-center item-text-wrap" ng-if="vm.deferred.$$state.status===1 && !vm.totalRecommendedJobs.length && vm.isPrimaryProfileExist "
+         style="margin-top: 5%;" class="text-center">
+
+      <div class="item" data-ng-if="vm.candidateProfileStatDeffered.$$state.status === 1 && !vm.candidatePrimaryProfile.isReviewedByOps">
+        <p>Hi {{vm.authentication.user.displayName}} We have recieved your profile and review it soon.</p>
+
+      </div>
+
+      <div class="item" data-ng-if="vm.candidateProfileStatDeffered.$$state.status === 1 && vm.candidatePrimaryProfile.isReviewedByOps && vm.totalAppliedJobs.length===0">
+        <p>Hi {{vm.authentication.user.displayName}} your Primary profile has been reviewed by our Team.Soon will call you and recommend niche jobs for you.</p>
+
+      </div>
+
+      <div class="item" data-ng-if="vm.candidateProfileStatDeffered.$$state.status === 1 && vm.candidatePrimaryProfile.isReviewedByOps && vm.totalAppliedJobs.length>0">
+      Hi {{vm.authentication.user.displayName}} your have already applied to some job we recommeded to you.we might recommend you some more job in future
+
+      </div>
+
+    </div>
+
+
+
+
+    <div class="row" data-ng-if="vm.deferred.$$state.status===2 && vm.totalRecommendedJobs.length === 0 && !vm.isPrimaryProfileExist">
+      <div class="col">
+        <div class="card" >
+          <div class="item item-assertive item-text-wrap  text-center" >
+            <i class="icon ion-ios-close-outline icon-left"></i>
+            You dont have any primary profile
+
+          </div>
+
+        </div>
+
+
+        <div class="row">
+          <div class="col text-center">
+            <button class="button icon-left  ion-document-text button-royal">
+              Create One
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </ion-content>
+
+</ion-view>

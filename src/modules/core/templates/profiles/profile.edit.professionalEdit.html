@@ -1,0 +1,32 @@
+<ion-view>
+  <ion-content scroll="false">
+    <ion-header-bar align-title="center" class="bar-positive">
+      <button class="button icon-left ion-chevron-left button-clear" ui-sref="profile.edit">Back</button>
+      <h1 class="title">My Profile</h1>
+      <button class="button icon-right button-positive" ng-click="vm.savedetailProfile(vm.profiledetial.name,vm.profiledetial.expecsal,vm.profiledetial.currentlocation)">Add</button>
+
+    </ion-header-bar>
+
+    <div class="list padding" style="margin-top: 14%;">
+      <div class="item item-divider">
+        Professional Information
+      </div>
+      <label class="item item-input item-stacked-label">
+      <input type="text" placeholder="Career Headlines" ng-model="vm.profiledetial.name">
+    </label>
+
+      <label class="item item-input item-stacked-label">
+        <input type="text" placeholder="Expected Salary" ng-model="vm.profiledetial.expecsal">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <input type="text" placeholder="Location" ng-model="vm.profiledetial.currentlocation">
+      </label>
+
+
+
+    </div>
+
+
+
+  </ion-content>
+</ion-view>

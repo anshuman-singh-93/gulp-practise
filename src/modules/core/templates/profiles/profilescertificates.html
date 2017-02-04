@@ -1,0 +1,37 @@
+<ion-view ng-init="vm.editrecord('certificates')">
+  <ion-content scroll="false">
+    <ion-header-bar align-title="center" class="bar-positive">
+      <button class="button icon-left ion-chevron-left button-clear" ui-sref="profile.edit" ng-click="vm.backprofile('certificates')">
+        Back
+      </button>
+      <h1 class="title">My Profile</h1>
+      <button ng-if="vm.index === ''" class="icon-left button button-positive" ng-click="vm.saveskills('certificates')">
+        Save
+      </button>
+      <button ng-if="vm.index !== ''" class="icon-left button button-positive"
+              ng-click="vm.updateSkill(vm.index,'certificates')">Update
+      </button>
+
+    </ion-header-bar>
+    <div class="list padding" style="margin-top: 14%;">
+      <div class="item item-divider">
+        Certificate
+      </div>
+      <label class="item item-input">
+        <input type="text" placeholder="Certification Name" ng-model="vm.certificationName">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Certificaton Authority" ng-model="vm.certificatonAuthority">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="License Number" ng-model="vm.licenseNumber">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Certification Url" ng-model="vm.CertificationUrl">
+      </label>
+
+    </div>
+
+
+  </ion-content>
+</ion-view>

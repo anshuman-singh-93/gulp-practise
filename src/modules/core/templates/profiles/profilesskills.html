@@ -1,0 +1,52 @@
+<ion-view ng-init="vm.editrecord()">
+  <ion-content scroll="false">
+    <ion-header-bar align-title="center" class="bar-positive">
+      <button class="button icon-left ion-chevron-left button-clear" ui-sref="profile.edit" ng-click="vm.backprofile('skills')">Back</button>
+      <h1 class="title">My Profile</h1>
+      <button ng-if="vm.index === ''" class="icon-left button button-positive" ng-click="vm.saveskills('skills')">Save</button>
+      <button ng-if="vm.index !== ''" class="icon-left button button-positive" ng-click="vm.updateSkill(vm.index,'skills')">Update</button>
+
+    </ion-header-bar>
+
+    <div class="list padding" style="margin-top: 14%;">
+      <div class="item item-divider">
+        Skill
+      </div>
+      <div class="item item-input item-stacked-label" ng-init="vm.skillList()">
+        <button class="buttonskill" modal-select ng-model="vm.skillName" options="vm.skillsName"
+                modal-title="Select a Skill">
+          <span ng-hide="vm.skillName">Skill</span>
+          <div class="option">
+            {{option}}
+          </div>
+          {{vm.skillName}}
+        </button>
+
+      </div>
+      <div class="item item-input item-stacked-label">
+        <button class="buttonskill" modal-select ng-model="vm.releventExperience" options="vm.experienceList"
+                modal-title="Select a Skill">
+          <span ng-hide="vm.releventExperience">Experience</span>
+          <div class="option">
+            {{option}}
+          </div>
+          {{vm.releventExperience === '0' ? 'Fresher':(vm.releventExperience === '<1'? 'Less Than One Year' : (vm.releventExperience === '>10' ? 'More Than 10 Years' : ((vm.releventExperience >= '1' || vm.releventExperience <= '10') ? vm.releventExperience+' Years' : '')))}}
+        </button>
+
+      </div>
+
+
+
+
+
+      <div class="item item-input item-stacked-label text-center">
+        <rating class="listvalues" ng-model="vm.expertiseLevel" max="rating.max"></rating>
+      </div>
+
+    </div>
+
+
+
+
+  </ion-content>
+</ion-view>

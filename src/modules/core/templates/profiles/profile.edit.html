@@ -1,0 +1,118 @@
+<ion-view cache-view="false" ng-init="vm.getdetails()">
+
+
+  <ion-content scroll="true">
+
+    <ion-header-bar align-title="center" class="bar-positive">
+      <a class="button icon-left ion-chevron-left button-clear" ui-sref="app.tabs.tab3" ng-click="vm.profileclose()">Back</a>
+      <!--<button class="button" ng-click="doSomething()">Close</button>-->
+      <h1 class="title">Profile</h1>
+      <button class="button icon-right button-positive" ng-click="vm.savePersonalProfile()">Save</button>
+
+    </ion-header-bar>
+
+    <div class="paddingprofileImage text-center profileimage">
+      <img width="80" height="80" class="imgStyleFor  "
+           ng-src="{{vm.apiUrl}}/{{vm.authentication.user.profileImageURL || '/modules/core/client/img/bigN.png'}}">
+      <h2 class="capitalize fontsizevalue">{{vm.authentication.user.displayName}}</h2>
+      <div class="item item-icon-right userprofilebg" ui-sref="profile.personalEdit">
+        <i class="icon ion-edit"></i>
+      </div>
+    </div>
+    <div class="list list-inset" style="margin-bottom: 2%">
+      <!--<div class="item item-divider">
+        Important Information
+      </div>
+      <div class="item item-icon-right" ui-sref="profile.personalEdit">
+        Personal Details
+        <i class="icon ion-chevron-right"></i>
+      </div>-->
+
+      <div class="item item-icon-right" ui-sref="profile.professionalEdit">
+        <i class="icon ion-chevron-right"></i>
+        Professional Details
+      </div>
+      <div class="item item-divider">
+        Selected Roles
+      </div>
+
+      <div ng-repeat="profileskills in vm.profileskills track by $index" data-ng-if="vm.profileskills.length > -1">
+        <div class="item item-icon-right">
+          <i class="icon ion-android-close" ng-click="vm.removeing(profileskills,$index,'skills')"></i>
+          <a class="atagcalue" ng-click="vm.editrecord(profileskills,$index,'skills')">
+            <div class="forWidth">{{profileskills.skillName}}</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="item item-icon-right" ui-sref="profile.profileskills">
+        <i class="icon ion-android-add-circle"></i>
+        Add a new skill
+      </div>
+
+
+      <div class="item item-divider">
+        Diploma and Certificates
+      </div>
+
+      <div ng-repeat="profilecertificate in vm.profilecertificate track by $index"
+           data-ng-if="vm.profilecertificate.length > -1">
+        <div class="item item-icon-right">
+          <i class="icon ion-android-close" ng-click="vm.removeing(profilecertificate,$index,'certificates')"></i>
+          <a class="atagcalue" ng-click="vm.editrecord(profilecertificate,$index,'certificates')">
+            <div class="forWidth">{{profilecertificate.certificationName}}</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="item item-icon-right" ui-sref="profile.profilecertificates">
+        <i class="icon ion-android-add-circle"></i>
+        Add a new certifications
+      </div>
+
+
+      <div class="item item-divider">
+        Qualification
+      </div>
+
+      <div ng-repeat="profileEducation in vm.profileEducation track by $index"
+           data-ng-if="vm.profileEducation.length > -1">
+        <div class="item item-icon-right">
+          <i class="icon ion-android-close" ng-click="vm.removeing(profileEducation,$index,'education')"></i>
+          <a class="atagcalue" ng-click="vm.editrecord(profileEducation,$index,'education')">
+            <div class="forWidth">{{profileEducation.degree}}</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="item item-icon-right" ui-sref="profile.profileEducation">
+        <i class="icon ion-android-add-circle"></i>
+        Education
+      </div>
+      <div class="item item-divider">
+        Employment Details
+      </div>
+
+      <div ng-repeat="profileEmployement in vm.profileEmployement track by $index"
+           data-ng-if="vm.profileEmployement.length > -1">
+        <div class="item item-icon-right">
+          <i class="icon ion-android-close" ng-click="vm.removeing(profileEmployement,$index,'employement')"></i>
+          <a class="atagcalue" ng-click="vm.editrecord(profileEmployement,$index,'employement')">
+            <div class="forWidth">{{profileEmployement.companyName}}</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="item item-icon-right" ui-sref="profile.profileEmployment">
+        <i class="icon ion-android-add-circle"></i>
+        Previous Employment
+      </div>
+      <div class="item item-divider">
+        <ion-checkbox ng-model="vm.primaryProfile">Primary Profile</ion-checkbox>
+      </div>
+
+
+    </div>
+  </ion-content>
+
+</ion-view>

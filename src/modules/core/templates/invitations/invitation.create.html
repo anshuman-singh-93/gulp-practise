@@ -1,0 +1,51 @@
+<ion-view>
+
+
+  <ion-header-bar align-title="center" class="bar-positive">
+    <a class="button icon-left ion-chevron-left button-clear"  ui-sref="invitation.list">Back</a>
+    <h1 class="title">Refer and Earn</h1>
+
+  </ion-header-bar>
+  <ion-content>
+
+
+    <div class="header text-center">
+      <h4 class="title">Invite Your Friend</h4>
+    </div>
+
+
+<div  style="margin-top: 5%;">
+  <div class="list padding"  ng-repeat="i in [1,2]">
+    <div class="item item-divider">
+      Friend- {{i}}
+    </div>
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">Name</span>
+      <input type="text" placeholder="John" ng-model="vm.invitation.invitee[i].name">
+    </label>
+
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">Email</span>
+      <input type="email" placeholder="John" ng-model="vm.invitation.invitee[i].email">
+    </label>
+
+
+
+
+
+  </div>
+
+</div>
+
+
+    <div class="row">
+      <div class="col text-center">
+        <button class="button button-positive" ng-click="vm.save();">Save</button>
+      </div>
+    </div>
+
+
+
+  </ion-content>
+</ion-view>
+

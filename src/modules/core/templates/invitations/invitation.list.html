@@ -1,0 +1,54 @@
+<ion-view>
+
+  <ion-header-bar align-title="center" class="bar-positive">
+    <a class="button icon-left ion-chevron-left button-clear"  ui-sref="app.tabs.tab1">Back</a>
+    <!--<button class="button" ng-click="doSomething()">Close</button>-->
+    <h1 class="title">Refer and Earn</h1>
+
+  </ion-header-bar>
+  <ion-content>
+    <ion-refresher on-refresh="refresh();"></ion-refresher>
+
+
+    <div class="header text-center">
+      <h4 class="title">My Invitations</h4>
+    </div>
+
+    <div class="row" data-ng-if="vm.deffered.promise.$$state.status===0 && !vm.pullfromRefresh ">
+      <div class="col text-center" >
+        <ion-spinner icon="spiral"  class="text-center"></ion-spinner>
+
+      </div>
+    </div>
+
+
+    <div class="col" data-ng-if="vm.deffered.promise.$$state.status===1 || vm.pullfromRefresh">
+      <div class="list " ng-repeat="invitation in vm.invitations">
+
+        <div  class="item item-icon-right">
+          <i class="icon ion-refresh" ng-click="vm.resend(invitation,$index);"></i>
+          {{invitation.name}}
+          <br>
+          <span style="color: #aaa">{{invitation.email}}</span>
+          <br>
+          <span style="color: #aaa">{{invitation.created |date:'d MMM yyyy'}}</span>
+          <br>
+
+          <span ng-class="{'redColor':invitation.registrationStatus=='Not Registered','greenColor':invitation.registrationStatus==='Registered'}">{{invitation.registrationStatus}}</span>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col text-center">
+          <button class="button button-energized" ui-sref="invitation.create">Invite Your Friends</button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </ion-content>
+</ion-view>
+

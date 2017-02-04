@@ -1,0 +1,69 @@
+<ion-view  view-title="Applied Job" >
+
+  <ion-content class="bg">
+
+<!--    <div class="row">
+      <div class="col text-center">
+        <h4>Applied Jobs</h4>
+      </div>
+    </div>-->
+    <ion-refresher on-refresh="refresh();"></ion-refresher>
+
+    <div class="row" data-ng-if="vm.deferred.$$state.status===0 && !vm.pullfromRefresh">
+      <div class="col text-center" >
+        <ion-spinner icon="spiral"  class="text-center"></ion-spinner>
+
+      </div>
+    </div>
+
+    <div class="row padding-5" data-ng-if="vm.deferred.$$state.status===1 && vm.totalAppliedJobs.length || vm.pullfromRefresh" ng-repeat="jobs in vm.totalAppliedJobs track by $index">
+      <ion-item class="item-thumbnail-left" >
+
+        <img class="imgStyleFor"  ng-src="{{vm.apiUrl}}/{{jobs.recruiterId.profileImageURL || '/modules/core/client/img/bigN.png'}}">
+
+        <h2>{{jobs.userjob.jobtitle}}</h2>
+        <h3>{{jobs.recruiterId.organisationName}}</h3>
+        <p>{{jobs.userjob.jobprofile | limitTo:200}}</p>
+
+
+
+      </ion-item>
+
+    </div>
+
+    <div ng-if="vm.deferred.$$state.status===1 && !vm.totalAppliedJobs.length"
+         class="text-center col" style="margin-top: 3%;">
+      <h5> You have not applied for any job</h5>
+
+    </div>
+
+    <div class="row" data-ng-if="vm.deferred.$$state.status===2 && vm.totalAppliedJobs.length === 0 && !vm.isPrimaryProfileExist">
+      <div class="col">
+        <div class="card" >
+          <div class="item item-assertive item-text-wrap  text-center" >
+            <i class="icon ion-ios-close-outline icon-left"></i>
+            You dont have any primary profile
+
+          </div>
+
+        </div>
+
+
+        <div class="row">
+          <div class="col text-center">
+            <button class="button icon-left  ion-document-text button-royal">
+              Create One
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+  </ion-content>
+
+</ion-view>

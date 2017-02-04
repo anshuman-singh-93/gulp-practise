@@ -1,0 +1,38 @@
+<ion-view cache-view="false" ng-init="vm.getProfilesForCandidate()" view-title="Profiles">
+
+  <ion-content scroll="true">
+
+<!--    <div class="row">
+      <div class="col text-center">
+        <h4>Your Profiles</h4>
+      </div>
+    </div>-->
+
+    <div class="row" data-ng-if="vm.deferred.promise.$$state.status===0">
+      <div class="col text-center" >
+        <ion-spinner icon="spiral"  class="text-center"></ion-spinner>
+
+      </div>
+    </div>
+
+    <ion-list data-ng-if="vm.deferred.promise.$$state.status===1 && vm.profiles.length" ng-repeat="profile in vm.profiles track by $index">
+      <ion-item ng-click="vm.slectProfile(profile)" class="item-thumbnail-left" ng-style="profile.primaryProfile ? {background:'#6dca71'} : {background : '#dc7188'}">
+
+        <img class="imgStyleFor"  ng-src="{{vm.apiUrl}}/{{profile.user.profileImageURL || '/modules/core/client/img/bigN.png'}}">
+
+        <h2>{{profile.name}}</h2>
+        <h3>Skills:</h3>
+        <span ng-repeat="skills in profile.mySkills track by $index"><span class="skillsbg">{{skills.skillName}}</span></span>
+
+      </ion-item>
+
+    </ion-list>
+
+    <!--<ion-floating-menu>
+      <ion-floating-item icon="ion-plus"></ion-floating-item>
+    </ion-floating-menu>-->
+  </ion-content>
+  <ion-floating-button has-footer="false" button-color="#2AC9AA" icon="ion-plus" iconColor="#fff" ui-sref="profile.edit">
+  </ion-floating-button>
+
+</ion-view>

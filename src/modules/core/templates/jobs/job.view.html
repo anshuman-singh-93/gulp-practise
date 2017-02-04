@@ -1,0 +1,64 @@
+<ion-nav-view>
+  <ion-view>
+
+    <ion-header-bar align-title="center" class="bar-positive">
+      <a class="button icon-left ion-chevron-left button-clear"  ui-sref="app.tabs.tab1">Back</a>
+      <!--<button class="button" ng-click="doSomething()">Close</button>-->
+      <h1 class="title">Job</h1>
+
+    </ion-header-bar>
+    <ion-content>
+
+      <div class="list">
+        <div class="item item-divider">
+          Job Title
+        </div>
+
+        <div class="item">
+          {{vm.job.jobtitle}}
+        </div>
+
+
+        <div class="item item-divider">
+          Job Location
+        </div>
+
+        <div class="item">
+          {{vm.job.location}}
+        </div>
+        <div class="item item-divider">
+          Company Name
+        </div>
+
+        <div class="item">
+          {{vm.job.user.organisationName}}
+        </div>
+
+        <div class="item item-divider">
+          Salary
+        </div>
+
+        <div class="item">
+          {{vm.job.rate}}
+        </div>
+
+        <div class="item item-divider">
+          Description
+        </div>
+
+        <div class="item item-text-wrap">
+          {{vm.job.jobprofile}}
+        </div>
+      </div>
+
+
+        <div class="col text-center">
+          <a  class="button button-positive" ng-disabled="vm.hasApplied" ng-click="vm.apply()">
+            Apply
+          </a>
+        </div>
+
+    </ion-content>
+    </ion-view>
+</ion-nav-view>
+

@@ -1,0 +1,44 @@
+<ion-view ng-init="vm.editrecord('employement')">
+  <ion-content scroll="false">
+    <ion-header-bar align-title="center" class="bar-positive">
+      <button class="button icon-left ion-chevron-left button-clear" ui-sref="profile.edit"
+              ng-click="vm.backprofile('employement')">
+        Back
+      </button>
+      <h1 class="title">My Profile</h1>
+      <button ng-if="vm.index === ''" class="icon-left button button-positive" ng-click="vm.saveskills('employement')">
+        Save
+      </button>
+      <button ng-if="vm.index !== ''" class="icon-left button button-positive"
+              ng-click="vm.updateSkill(vm.index,'employement')">Update
+      </button>
+
+    </ion-header-bar>
+
+    <div class="list padding" style="margin-top: 14%;">
+      <div class="item item-divider">
+        Employement
+      </div>
+      <label class="item item-input">
+        <input type="text" placeholder="Hospital Name" ng-model="vm.companyName">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Role" ng-model="vm.lRole">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Experience in Years" ng-model="vm.previousExperience">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Previous Salary" ng-model="vm.previousSalary">
+      </label>
+      <label class="item item-input">
+        <input type="date" placeholder="From Date" ng-model="vm.fromDate">
+      </label>
+      <label class="item item-input">
+        <input type="date" placeholder="To Date" ng-model="vm.toDate">
+      </label>
+    </div>
+
+
+  </ion-content>
+</ion-view>
